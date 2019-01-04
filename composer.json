@@ -1,0 +1,18 @@
+{
+    "name": "spaceboy/stalin-sort",
+    "description": "PHP library for single-pass sort (and reverse sort) in \"Stalin standards\" (all non-ordered items are eliminated)",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Spaceboy"
+        }
+    ],
+    "keywords": ["spaceboy", "php", "stalin-sort", "array", "sort"],
+    "autoload": {
+        "classmap": ["src"]
+    },
+    "require": {
+        "php": ">= 5.3"
+    }
+}
