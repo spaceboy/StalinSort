@@ -1,89 +1,93 @@
-<?php
-/**
- * @description PHP library for single-pass sort (and reverse sort) in "Stalin standards" (all non-ordered items are eliminated).
- * @author Spaceboy
- */
+<?php declare(strict_types = 1);
 
 namespace Spaceboy\StalinSort;
 
+/**
+ * PHP library for single-pass sort (and reverse sort) in "Stalin standards" (all non-ordered items are eliminated).
+ *
+ * @author Spaceboy
+ * @package Spaceboy\StalinSort
+ */
 class StalinSort {
-
     /**
-     * Sorts array
+     * Sorts array.
+     *
      * @param array $arr
-     * @return boolean
+     *
+     * @return void
      */
-    public static function sort(&$arr)
+    public static function sort(array &$arr): void
     {
-        $max    = array_shift($arr);
-        $out    = array($max);
+        $max = array_shift($arr);
+        $out = array($max);
         foreach($arr AS $val) {
             if (!($max > $val)) {
-                $out[]  = $max  = $val;
+                $out[] = $max = $val;
             }
         }
-        $arr    = $out;
-        return TRUE;
+        $arr = $out;
     }
 
     /**
-     * Sorts array in reverse order
+     * Sorts array in reverse order.
+     *
      * @param array $arr
-     * @return boolean
+     *
+     * @return void
      */
-    public static function rsort(&$arr)
+    public static function rsort(array &$arr): void
     {
-        $min    = array_shift($arr);
-        $out    = array($min);
+        $min = array_shift($arr);
+        $out = array($min);
         foreach($arr AS $val) {
             if (!($val > $min)) {
                 $out[]  = $min  = $val;
             }
         }
-        $arr    = $out;
-        return TRUE;
+        $arr = $out;
     }
 
     /**
-     * Sorts array with index preserved
+     * Sorts array with index preserved.
+     *
      * @param array $arr
-     * @return boolean
+     *
+     * @return void
      */
-    public static function isort(&$arr)
+    public static function isort(array &$arr): void
     {
         foreach ($arr AS $key => $val) {
             if (!isset($max)) {
-                $max    = $val;
+                $max = $val;
             } else {
                 if ($max > $val) {
                     unset($arr[$key]);
                 } else {
-                    $max    = $val;
+                    $max = $val;
                 }
             }
         }
-        return TRUE;
     }
 
     /**
-     * Sorts array recursively with index preserved
+     * Sorts array in reverse order with index preserved.
+     *
      * @param array $arr
-     * @return boolean
+     *
+     * @return void
      */
-    public static function irsort(&$arr)
+    public static function irsort(array &$arr): void
     {
         foreach ($arr AS $key => $val) {
             if (!isset($min)) {
-                $min    = $val;
+                $min = $val;
             } else {
                 if ($val > $min) {
                     unset($arr[$key]);
                 } else {
-                    $min    = $val;
+                    $min = $val;
                 }
             }
         }
-        return TRUE;
     }
-
 }
